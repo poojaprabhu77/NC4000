@@ -24,7 +24,7 @@ def submit():
 def get_data():
     global data
     if data is None:
-        return jsonify({'error': 'No data available'}), 404
+        return jsonify({'link': 'https://your-default-tracking-link.com'}), 200
     return jsonify(data), 200
 
 @app.errorhandler(404)
