@@ -40,11 +40,13 @@ def submit():
     if not param:
         return jsonify({'error': 'Missing parameter'}), 400
     data = {'link': param}
+    print(data)
     return jsonify({'received': param}), 200
 
 @app.route('/data', methods=['GET'])
 def get_data():
     global data
+    print(data)
     if data is None:
         # Return a default link if no data has been submitted
         return jsonify({'link': 'https://your-default-tracking-link.com'}), 200
