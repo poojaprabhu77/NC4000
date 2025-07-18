@@ -1,3 +1,10 @@
+@app.route('/frontend')
+def frontend_redirect():
+    return redirect('/frontend.html')
+
+@app.route('/frontend.html')
+def serve_frontend():
+    return send_from_directory(BASE_DIR, 'frontend.html')
 from flask import Flask, request, jsonify, send_from_directory, redirect
 from flask_cors import CORS
 import logging
@@ -6,6 +13,7 @@ import os
 app = Flask(__name__, static_folder=os.path.dirname(os.path.abspath(__file__)))
 # Use a more robust storage for production (e.g., database)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 @app.route('/')
 def root():
     # Redirect to index.html
@@ -14,6 +22,15 @@ def root():
 @app.route('/index.html')
 def serve_index():
     return send_from_directory(BASE_DIR, 'index.html')
+
+# Add /frontend redirect and serve
+@app.route('/frontend')
+def frontend_redirect():
+    return redirect('/frontend.html')
+
+@app.route('/frontend.html')
+def serve_frontend():
+    return send_from_directory(BASE_DIR, 'frontend.html')
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 # Use a more robust storage for production (e.g., database)
