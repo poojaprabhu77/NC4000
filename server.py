@@ -4,7 +4,8 @@ from flask_cors import CORS
 import logging
 import os
 
-app = Flask(__name__, static_folder=os.path.dirname(os.path.abspath(__file__)))
+#app = Flask(__name__, static_folder=os.path.dirname(os.path.abspath(__file__)))
+app = Flask(__name__, static_folder="static")
 # Use a more robust storage for production (e.g., database)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
