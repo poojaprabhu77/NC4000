@@ -46,7 +46,9 @@ def submit():
 @app.route('/data', methods=['GET'])
 def get_data():
     global data
+    print('**************************************')
     print(data)
+    print('****************************************')
     if data is None:
         # Return a default link if no data has been submitted
         return jsonify({'link': 'https://your-default-tracking-link.com'}), 200
