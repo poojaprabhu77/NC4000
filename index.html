@@ -58,7 +58,7 @@
         </div>
         <script>
             // This script can be used to handle the tracking functionality
-            fetch('http://127.0.0.1:5000/data')
+            fetch('/data')
             .then(response => response.json())
             .then(data => {
                 document.getElementById('trackLink').setAttribute('href', data.link); // Correctly set the href attribute
