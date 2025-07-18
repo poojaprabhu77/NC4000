@@ -23,10 +23,9 @@ def root():
 def serve_index():
     return send_from_directory(BASE_DIR, 'index.html')
 
-# Add /frontend redirect and serve
 @app.route('/frontend.html')
 def frontend_redirect():
-    return send_from_directory(BASE_DIR,'/frontend.html')
+    return redirect('/frontend.html')
 
 @app.route('/frontend.html')
 def serve_frontend():
