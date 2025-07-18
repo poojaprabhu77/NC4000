@@ -1,0 +1,72 @@
+<!Doctype html>
+<html>
+    <head>
+        <title> NORTHCAPE 4000</title>
+        <style>
+            body {
+                background-image: url('./baf1a4-7df-5252-8c3e-b240a1f7af_AdobeStock_416790218.jpeg');
+                background-size: cover;
+                color: #222;
+                font-family: 'Segoe UI', Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                background: rgba(255,255,255,0.85);
+                max-width: 600px;
+                margin: 40px auto;
+                border-radius: 12px;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+                padding: 32px;
+                text-align: center;
+            }
+            h1 {
+                color: #1a4d7a;
+                margin-bottom: 16px;
+            }
+            button {
+                background: #1a4d7a;
+                color: #fff;
+                border: none;
+                border-radius: 6px;
+                padding: 10px 24px;
+                font-size: 1rem;
+                cursor: pointer;
+                margin: 8px 0;
+                transition: background 0.2s;
+            }
+            button:hover {
+                background: #2566a8;
+            }
+            a.lnk button {
+                margin-top: 8px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Ollis's NorthCape 4000!!</h1>
+            <p>
+                <strong>Funderinzer link:</strong>
+                <button onclick="window.location='https://www.kinderkrebsstiftung.de/spenden-helfen/spendenaktion/?cfd=ca6dr'">Click for kinderkrebsstiftung</button>
+            </p>
+            <p>Track me by following the link below:</p>    
+            <a class="lnk" id="trackLink" href="#"><button>Track me!</button></a>
+            <br><br>
+            <a href="frontend.html"><button>Go to Parameter Submission Page</button></a>
+
+            <p> For more information about the event: <a href="https://northcape4000.com/">Official NorthCape 4000 website</a>.</p>
+        </div>
+        <script>
+            // This script can be used to handle the tracking functionality
+            fetch('http://127.0.0.1:5000/data')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('trackLink').setAttribute('href', data.link); // Correctly set the href attribute
+            })
+            .catch(() => {
+                document.getElementById('trackLink').setAttribute('href', '#');
+            });
+        </script>
+    </body>
+</html>
