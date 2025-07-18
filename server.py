@@ -1,8 +1,19 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory, redirect
 from flask_cors import CORS
 import logging
 
-app = Flask(__name__)
+import os
+app = Flask(__name__, static_folder=os.path.dirname(os.path.abspath(__file__)))
+# Use a more robust storage for production (e.g., database)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+@app.route('/')
+def root():
+    # Redirect to index.html
+    return redirect('/index.html')
+
+@app.route('/index.html')
+def serve_index():
+    return send_from_directory(BASE_DIR, 'index.html')
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 # Use a more robust storage for production (e.g., database)
@@ -24,6 +35,7 @@ def submit():
 def get_data():
     global data
     if data is None:
+        # Return a default link if no data has been submitted
         return jsonify({'link': 'https://your-default-tracking-link.com'}), 200
     return jsonify(data), 200
 
