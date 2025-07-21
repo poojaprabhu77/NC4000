@@ -64,13 +64,10 @@
             fetch('/data')
                 .then(response => response.json())
                 .then(data => {
-                    console.log(Object.keys(data))
-                    console.log(data.link['track']);
-                    console.log(data['link']["track"])
-                    console.log(typeof(data))
-                    console.log(data['track'])
-                    console.log(data)
-                    lk = data['link']["track"]
+                    lk = data['link']
+                    console.log(typeof(lk))
+                    
+                    lk = data['link']['track']
                     if (data && data.track) {
                         document.getElementById('trackLink').setAttribute('href',lk);
                     } else {
