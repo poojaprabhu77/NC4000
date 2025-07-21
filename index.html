@@ -66,8 +66,9 @@
                 .then(data => {
                     lk = data['link']
                     console.log(typeof(lk))
-                    
-                    lk = data['link']['track']
+                    console.log(JSON.parse(lk))
+                    js = JSON.parse(lk)
+                    lk = js['track']
                     if (data && data.track) {
                         document.getElementById('trackLink').setAttribute('href',lk);
                     } else {
