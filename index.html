@@ -64,6 +64,7 @@
             fetch('/data')
                 .then(response => response.json())
                 .then(data => {
+                    console.log(Object.keys(data))
                     console.log(data.link['track']);
                     console.log(data['link'])
                     console.log(typeof(data))
