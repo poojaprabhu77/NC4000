@@ -36,9 +36,19 @@ def submit():
     app.logger.info(f"Received param: {param}")
     if not param:
         return jsonify({'error': 'Missing parameter'}), 400
-    # Store only the link string in link.json
-    with open(os.path.join(BASE_DIR, 'link.json'), 'w') as fl:
-        fl.write(param)
+    # Update only the 'track' value in link.json, preserving JSON structure
+    link_json_path = os.path.join(BASE_DIR, 'link.json')
+    data = {}
+    # Try to read existing JSON
+    if os.path.exists(link_json_path):
+        try:
+            with open(link_json_path, 'r') as f:
+                data = json.load(f)
+        except Exception:
+            data = {}
+    data['track'] = param
+    with open(link_json_path, 'w') as f:
+        json.dump(data, f, indent=4)
     print(param)
     return jsonify({'received': param}), 200
 
