@@ -69,7 +69,7 @@
                     console.log(JSON.parse(lk))
                     js = JSON.parse(lk)
                     lk = js['track']
-                    if (data && data.track) {
+                    if (lk) {
                         document.getElementById('trackLink').setAttribute('href',lk);
                     } else {
                         document.getElementById('trackLink').setAttribute('href', "#");
