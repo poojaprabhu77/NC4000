@@ -66,12 +66,13 @@
                 .then(data => {
                     console.log(Object.keys(data))
                     console.log(data.link['track']);
-                    console.log(data['link'])
+                    console.log(data['link']["track"])
                     console.log(typeof(data))
                     console.log(data['track'])
                     console.log(data)
+                    lk = data['link']["track"]
                     if (data && data.track) {
-                        document.getElementById('trackLink').setAttribute('href', data.track);
+                        document.getElementById('trackLink').setAttribute('href',lk);
                     } else {
                         document.getElementById('trackLink').setAttribute('href', "#");
                     }
