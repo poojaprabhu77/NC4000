@@ -61,23 +61,18 @@
             <p> For more information about the event: <a href="https://northcape4000.com/" target="_blank">Official NorthCape 4000 website</a>.</p>
         </div>
         <script>
-            fetch('/data', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
+            fetch('/data')
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
-                    if (data && data.track) {
-                        document.getElementById('trackLink').setAttribute('href', data.track);
+                    if (data && data.link) {
+                        document.getElementById('trackLink').setAttribute('href', data.link);
                     } else {
                         document.getElementById('trackLink').setAttribute('href', "#");
                     }
                 })
                 .catch(error => {
-                    messageDiv.innerHTML = '<span class="error">Error submitting parameter.</span>';
+                    document.getElementById('trackLink').setAttribute('href', "#");
                     console.error('Error:', error);
                 });
         </script>
