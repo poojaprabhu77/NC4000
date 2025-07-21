@@ -46,8 +46,8 @@ def submit():
 def get_data(): 
     try:
         with open(os.path.join(BASE_DIR, 'link.json'), 'r') as f:
-            link = f.read().strip()
-        return jsonify({'link': link}), 200
+            link = json.dump(f)
+        return jsonify({'link': link["track"]}), 200
     except FileNotFoundError:
         return jsonify({'error': 'Data file not found'}), 404
     except Exception as e:
