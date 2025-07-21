@@ -65,7 +65,7 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log(data.track);
-                    console.log(type(data))
+                    console.log(typeof(data))
                     console.log(data['track'])
                     if (data && data.track) {
                         document.getElementById('trackLink').setAttribute('href', data.track);
