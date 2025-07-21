@@ -61,11 +61,10 @@
             <p> For more information about the event: <a href="https://northcape4000.com/" target="_blank">Official NorthCape 4000 website</a>.</p>
         </div>
         <script>
-            fetch('./data')
-            .then(response =>{ 
-                console.log(response);
-                response.json()})
+            fetch('/data')
+            .then(response =>response.json())
             .then(jsonResponse => {
+                console.log(jsonResponse)
                 if(jsonResponse && jsonResponse.track) {
                     document.getElementById('trackLink').setAttribute('href', jsonResponse.track);
                 } else {
